@@ -7,6 +7,8 @@ import android.widget.EditText
 import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,13 +25,15 @@ class MainActivity : AppCompatActivity() {
 
 
 
-//        val cats = listOf("Barsik", "Murzik", "Vasya", "Pushok")
-        val cats = (1..50).map {"Cat $it"}
+        val cats1 = listOf("Barsik", "Murzik", "Vasya", "Pushok")
+//        val cats1 = (1..100.map {"Cat $it"}
+
+        val cats2 = (1..100).map {"Cat $it"}
 
         val adapter = ArrayAdapter(
             this,
             android.R.layout.simple_list_item_1,
-            cats
+            cats1
         )
 
         findViewById<ListView>(R.id.catList).adapter = adapter
@@ -37,7 +41,18 @@ class MainActivity : AppCompatActivity() {
         val catList = findViewById<ListView>(R.id.catList)
 
         catList.setOnItemClickListener { parent, view, position, id ->
-            result.text = cats[position]
+            result.text = cats1[position]
         }
+
+
+
+        val recyclerView = findViewById<RecyclerView>(R.id.catRecyclerView)
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = CatAdapter(
+            cats2,
+            onCatClick = TODO()
+        )
+
     }
 }
