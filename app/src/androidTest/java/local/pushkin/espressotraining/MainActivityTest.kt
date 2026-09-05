@@ -1,5 +1,6 @@
 package local.pushkin.espressotraining
 
+import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
@@ -7,6 +8,7 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
+import org.hamcrest.Matchers.equalTo
 import org.junit.Rule
 import org.junit.Test
 
@@ -26,5 +28,22 @@ class MainActivityTest {
 
         onView(withId(R.id.textResult))
             .check(matches(withText("Alexander")))
+    }
+
+    @Test
+    fun clickOnMursikTest1() {
+        onData(equalTo("Cat 49"))
+            .inAdapterView(withId(R.id.catList))
+            .perform(click())
+        onView(withId(R.id.textResult))
+            .check(matches(withText("Cat 49")))
+    }
+
+    @Test
+    fun clickOnMursikTest2() {
+        onView(withText("Cat 49"))
+            .perform(click())
+        onView(withId(R.id.textResult))
+            .check(matches(withText("Cat 49")))
     }
 }

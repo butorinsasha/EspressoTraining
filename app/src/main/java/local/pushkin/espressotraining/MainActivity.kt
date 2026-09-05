@@ -20,5 +20,24 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             result.text = editText.text.toString()
         }
+
+
+
+//        val cats = listOf("Barsik", "Murzik", "Vasya", "Pushok")
+        val cats = (1..50).map {"Cat $it"}
+
+        val adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_list_item_1,
+            cats
+        )
+
+        findViewById<ListView>(R.id.catList).adapter = adapter
+
+        val catList = findViewById<ListView>(R.id.catList)
+
+        catList.setOnItemClickListener { parent, view, position, id ->
+            result.text = cats[position]
+        }
     }
 }

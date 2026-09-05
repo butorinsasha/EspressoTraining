@@ -24,4 +24,9 @@
         android:layout_height="wrap_content"
         android:text="Result:" />
 
+    <ListView
+        android:id="@+id/catList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
