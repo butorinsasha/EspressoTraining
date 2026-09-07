@@ -11,8 +11,17 @@ class CatAdapter(
     private val onCatClick: (String) -> Unit
 ) : RecyclerView.Adapter<CatAdapter.CatViewHolder>() {
 
-    class CatViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class CatViewHolder(
+        itemView: View,
+        private val clickListener: (String) -> Unit
+    ) : RecyclerView.ViewHolder(itemView) {
         val catName: TextView = itemView.findViewById(R.id.catName)
+
+        init {
+            itemView.setOnClickListener {
+                clickListener(catName.text.toString())
+            }
+        }
     }
 
     // создаёт View строки
@@ -20,7 +29,7 @@ class CatAdapter(
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_cat, parent, false)
 
-        return CatViewHolder(view)
+        return CatViewHolder(view, onCatClick)
     }
 
     // помещает данные в строку

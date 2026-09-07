@@ -50,8 +50,8 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = CatAdapter(
-            cats2,
-            onCatClick = TODO()
+            cats = cats2,
+            onCatClick = { cat -> result.text = cat }
         )
 
     }

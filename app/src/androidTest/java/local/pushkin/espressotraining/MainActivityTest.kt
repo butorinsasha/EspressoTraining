@@ -57,8 +57,8 @@ class MainActivityTest {
 
         onView(withId(R.id.catRecyclerView))
             .perform(
-                RecyclerViewActions.actionOnItemAtPosition<CatAdapter.CatViewHolder>(
-                    /* position = */ 99,
+                RecyclerViewActions.actionOnItem<CatAdapter.CatViewHolder>(
+                    /* itemViewMatcher = */ withText("Cat 99"),
                     /* viewAction = */ click()
                 )
             )
