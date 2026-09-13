@@ -1,4 +1,4 @@
-package local.pushkin.espressotraining
+package local.pushkin.espressotraining.matchers
 
 import android.view.View
 import android.widget.EditText

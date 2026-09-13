@@ -15,7 +15,7 @@ class CatAdapter(
         itemView: View,
         private val clickListener: (String) -> Unit
     ) : RecyclerView.ViewHolder(itemView) {
-        val catName: TextView = itemView.findViewById(R.id.catName)
+        val catName: TextView = itemView.findViewById(R.id.cat_name)
 
         init {
             itemView.setOnClickListener {
