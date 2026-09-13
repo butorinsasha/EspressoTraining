@@ -30,8 +30,6 @@ class MainActivity : AppCompatActivity() {
 
 
         val cats1 = listOf("Barsik", "Murzik", "Vasya", "Pushok")
-//        val cats1 = (1..100.map {"Cat $it"}
-
         val cats2 = (1..100).map {"Cat $it"}
 
         val adapter = ArrayAdapter(
