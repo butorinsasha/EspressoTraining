@@ -3,6 +3,7 @@ package local.pushkin.espressotraining
 import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.replaceText
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
@@ -34,7 +35,7 @@ class MainActivityTest {
     @Test
     fun clickOnMursikAdapterViewTest() {
         onData(equalTo("Cat 49"))
-            .inAdapterView(withId(R.id.catList))
+            .inAdapterView(withId(R.id.catList)) // if there are more than one AdapterView
             .perform(click())
         onView(withId(R.id.textResult))
             .check(matches(withText("Cat 49")))
@@ -64,4 +65,15 @@ class MainActivityTest {
             )
     }
 
+    @Test
+    fun emptyNameShouldShowsErrorTest() {
+        onView(withId(R.id.editTextName))
+            .perform(replaceText(""))
+
+        onView(withId(R.id.buttonHello))
+            .perform(click())
+
+        onView(withId(R.id.editTextName))
+            .check(matches(ErrorMatcher("Wrong error")))
+    }
 }

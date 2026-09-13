@@ -20,7 +20,11 @@ class MainActivity : AppCompatActivity() {
         val result = findViewById<TextView>(R.id.textResult)
 
         button.setOnClickListener {
-            result.text = editText.text.toString()
+            if (editText.text.isBlank()) {
+                editText.error = "Input a name"
+            } else {
+                result.text = editText.text.toString()
+            }
         }
 
 
